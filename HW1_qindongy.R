@@ -41,7 +41,7 @@ names(data_agg)[2:6] <-
   c("test_result", "hospital_flag", "icu_flag", "vent_flag", 'sex')
 
 # Create quarterly label
-quarter = c(1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4)
+quarter = c("2020-2", "2020-2", "2020-2", "2020-3", "2020-3", "2020-3", "2020-4", "2020-4", "2020-4","2021-1","2021-1","2021-1")
 data_agg[, Quarter := quarter]
 
 
@@ -101,6 +101,7 @@ server <- function(input, output) {
       get(input$variable) ~ Quarter,
       col = "white",
       border = "black",
+      ylab=input$variable,
       data = data_agg,
       main = "boxplot of covid data"
     )
